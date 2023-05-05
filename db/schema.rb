@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_05_151201) do
+ActiveRecord::Schema.define(version: 2023_05_05_152934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "affiliations", force: :cascade do |t|
+    t.bigint "physician_id", null: false
+    t.bigint "department_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "index_affiliations_on_department_id"
+    t.index ["physician_id"], name: "index_affiliations_on_physician_id"
+  end
 
   create_table "blocks", force: :cascade do |t|
     t.integer "floor"
@@ -84,7 +93,22 @@ ActiveRecord::Schema.define(version: 2023_05_05_151201) do
     t.index ["block_id"], name: "index_rooms_on_block_id"
   end
 
+  create_table "trainings", force: :cascade do |t|
+    t.bigint "physician_id", null: false
+    t.bigint "procedure_id", null: false
+    t.datetime "certification_date"
+    t.datetime "certification_expires_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["physician_id"], name: "index_trainings_on_physician_id"
+    t.index ["procedure_id"], name: "index_trainings_on_procedure_id"
+  end
+
+  add_foreign_key "affiliations", "departments"
+  add_foreign_key "affiliations", "physicians"
   add_foreign_key "departments", "physicians"
   add_foreign_key "patients", "physicians"
   add_foreign_key "rooms", "blocks"
+  add_foreign_key "trainings", "physicians"
+  add_foreign_key "trainings", "procedures"
 end
