@@ -10,8 +10,9 @@
 #
 # Indexes
 #
-#  index_affiliations_on_department_id  (department_id)
-#  index_affiliations_on_physician_id   (physician_id)
+#  index_affiliations_on_department_id                   (department_id)
+#  index_affiliations_on_physician_id                    (physician_id)
+#  index_affiliations_on_physician_id_and_department_id  (physician_id,department_id) UNIQUE
 #
 # Foreign Keys
 #

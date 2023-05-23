@@ -12,8 +12,9 @@
 #
 # Indexes
 #
-#  index_oncalls_on_block_id  (block_id)
-#  index_oncalls_on_nurse_id  (nurse_id)
+#  index_oncalls_on_block_id               (block_id)
+#  index_oncalls_on_nurse_id               (nurse_id)
+#  index_oncalls_on_nurse_id_and_block_id  (nurse_id,block_id) UNIQUE
 #
 # Foreign Keys
 #

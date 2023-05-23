@@ -19,6 +19,7 @@
 #  index_undergos_on_physician_id  (physician_id)
 #  index_undergos_on_procedure_id  (procedure_id)
 #  index_undergos_on_stay_id       (stay_id)
+#  unique_undergoes                (patient_id,procedure_id,stay_id,date) UNIQUE
 #
 # Foreign Keys
 #

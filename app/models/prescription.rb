@@ -18,6 +18,7 @@
 #  index_prescriptions_on_medication_id   (medication_id)
 #  index_prescriptions_on_patient_id      (patient_id)
 #  index_prescriptions_on_physician_id    (physician_id)
+#  unique_prescriptions                   (patient_id,physician_id,medication_id,date) UNIQUE
 #
 # Foreign Keys
 #

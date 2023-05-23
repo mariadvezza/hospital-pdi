@@ -12,8 +12,9 @@
 #
 # Indexes
 #
-#  index_trainings_on_physician_id  (physician_id)
-#  index_trainings_on_procedure_id  (procedure_id)
+#  index_trainings_on_physician_id                   (physician_id)
+#  index_trainings_on_physician_id_and_procedure_id  (physician_id,procedure_id) UNIQUE
+#  index_trainings_on_procedure_id                   (procedure_id)
 #
 # Foreign Keys
 #

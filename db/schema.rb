@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_23_192343) do
+ActiveRecord::Schema.define(version: 2023_05_23_193554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2023_05_23_192343) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["department_id"], name: "index_affiliations_on_department_id"
+    t.index ["physician_id", "department_id"], name: "index_affiliations_on_physician_id_and_department_id", unique: true
     t.index ["physician_id"], name: "index_affiliations_on_physician_id"
   end
 
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 2023_05_23_192343) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["block_id"], name: "index_oncalls_on_block_id"
+    t.index ["nurse_id", "block_id"], name: "index_oncalls_on_nurse_id_and_block_id", unique: true
     t.index ["nurse_id"], name: "index_oncalls_on_nurse_id"
   end
 
@@ -113,6 +115,7 @@ ActiveRecord::Schema.define(version: 2023_05_23_192343) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
     t.index ["medication_id"], name: "index_prescriptions_on_medication_id"
+    t.index ["patient_id", "physician_id", "medication_id", "date"], name: "unique_prescriptions", unique: true
     t.index ["patient_id"], name: "index_prescriptions_on_patient_id"
     t.index ["physician_id"], name: "index_prescriptions_on_physician_id"
   end
@@ -151,6 +154,7 @@ ActiveRecord::Schema.define(version: 2023_05_23_192343) do
     t.datetime "certification_expires_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["physician_id", "procedure_id"], name: "index_trainings_on_physician_id_and_procedure_id", unique: true
     t.index ["physician_id"], name: "index_trainings_on_physician_id"
     t.index ["procedure_id"], name: "index_trainings_on_procedure_id"
   end
@@ -165,6 +169,7 @@ ActiveRecord::Schema.define(version: 2023_05_23_192343) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["nurse_id"], name: "index_undergos_on_nurse_id"
+    t.index ["patient_id", "procedure_id", "stay_id", "date"], name: "unique_undergoes", unique: true
     t.index ["patient_id"], name: "index_undergos_on_patient_id"
     t.index ["physician_id"], name: "index_undergos_on_physician_id"
     t.index ["procedure_id"], name: "index_undergos_on_procedure_id"
