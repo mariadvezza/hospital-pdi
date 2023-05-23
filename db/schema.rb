@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_23_193554) do
+ActiveRecord::Schema.define(version: 2023_05_23_203330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2023_05_23_193554) do
     t.bigint "department_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "primary_affiliation", default: false
     t.index ["department_id"], name: "index_affiliations_on_department_id"
     t.index ["physician_id", "department_id"], name: "index_affiliations_on_physician_id_and_department_id", unique: true
     t.index ["physician_id"], name: "index_affiliations_on_physician_id"
@@ -41,9 +42,9 @@ ActiveRecord::Schema.define(version: 2023_05_23_193554) do
 
   create_table "blocks", force: :cascade do |t|
     t.integer "floor"
-    t.integer "block"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "code"
   end
 
   create_table "departments", force: :cascade do |t|

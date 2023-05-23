@@ -2,11 +2,12 @@
 #
 # Table name: affiliations
 #
-#  id            :bigint           not null, primary key
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  department_id :bigint           not null
-#  physician_id  :bigint           not null
+#  id                  :bigint           not null, primary key
+#  primary_affiliation :boolean          default(FALSE)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  department_id       :bigint           not null
+#  physician_id        :bigint           not null
 #
 # Indexes
 #

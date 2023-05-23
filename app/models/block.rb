@@ -3,7 +3,7 @@
 # Table name: blocks
 #
 #  id         :bigint           not null, primary key
-#  block      :integer
+#  code       :integer
 #  floor      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
